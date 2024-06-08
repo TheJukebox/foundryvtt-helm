@@ -1,0 +1,53 @@
+
+name: Release
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_run:
+    workflows: 
+      - Test
+      - Package
+    types:   
+      - completed
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read chart info
+        uses: pietrobolcato/action-read-yaml@1.1.0
+        id: read_yaml
+        with:
+          Chart.yaml: charts/foundryvtt/Chart.yaml
+
+      - name: Download release artefact
+        uses: actions/download-artifact@v4
+        with:
+          name: chart-release 
+          path: foundryvtt-${{ steps.read_yaml.outputs['version']}}.tgz
+      
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      
+      - name: Upload artefact to release
+        id: upload_release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./foundryvtt-${{ steps.read_yaml.outputs['version']}}.tgz
+          asset_name: ./foundryvtt-${{ steps.read_yaml.outputs['version']}}.tgz
+          asset_content_type: application/gzip
