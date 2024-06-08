@@ -41,7 +41,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 30000
 
 ingress:
   enabled: false
@@ -91,8 +91,7 @@ autoscaling:
 volumes:
   - name: foundrydata
     hostPath:
-      path: /foundrydata
-      type: Directory
+      path: /data/foundrydata
 # - name: foo
 #   secret:
 #     secretName: mysecret
@@ -100,7 +99,7 @@ volumes:
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
-  - mountPath: /data/foundrydata
+  - mountPath: /foundrydata
     name: foundrydata
     readOnly: false
 

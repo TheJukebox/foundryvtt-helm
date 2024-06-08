@@ -6,13 +6,16 @@ ARG FOUNDRY_VERSION=12.325 \
 ENV FOUNDRY_VERSION=$FOUNDRY_VERSION \
     FOUNDRY_DATA=/foundrydata 
 
-RUN mkdir /app
+RUN mkdir /app && \
+    mkdir ${FOUNDRY_DATA}
 
-COPY FoundryVTT-${FOUNDRY_VERSION}}.zip /app
+COPY FoundryVTT-${FOUNDRY_VERSION}.zip /app
 
 WORKDIR /app
 
-RUN unzip FoundryVTT-${FOUNDRY_VERSION}}.zip && \
-    rm FoundryVTT-${FOUNDRY_VERSION}
+RUN unzip FoundryVTT-${FOUNDRY_VERSION}.zip && \
+    rm FoundryVTT-${FOUNDRY_VERSION}.zip
+
+EXPOSE 30000
 
 ENTRYPOINT [ "node", "resources/app/main.js", "${FOUNDRY_DATA}" ]
