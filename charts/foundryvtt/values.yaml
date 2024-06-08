@@ -60,16 +60,12 @@ ingress:
   #      - chart-example.local
 
 resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
+  ## These are based on the minimum recommended requirements for FoundryVTT.
+  ## Uncomment them and remove the curly braces above to set these as the
+  ## minimum requirements from the kubernetes cluster
   # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+  #   cpu: 200m
+  #   memory: 4096Mi
 
 livenessProbe:
   httpGet:
