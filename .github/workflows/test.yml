@@ -6,6 +6,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-      - run: helm lint charts/foundryvtt
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Lint helm chart
+        run: helm lint charts/foundryvtt

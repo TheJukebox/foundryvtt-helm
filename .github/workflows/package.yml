@@ -1,11 +1,5 @@
 name: Package
 on:
-  push:
-    branches:
-      - main
-      - feature/*
-    tags:
-      - "v*"
   workflow_run:
     workflows: 
       - Test
@@ -24,9 +18,6 @@ jobs:
         id: read_yaml
         with:
           Chart.yaml: charts/foundryvtt/Chart.yaml
-          
-      - name: Install Helm
-        run: https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
       - name: Package chart
         run: helm package charts/foundryvtt -d foundryvtt-${{ steps.read_yaml.outputs['version']}}.tgz
