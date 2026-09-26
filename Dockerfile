@@ -1,10 +1,10 @@
 FROM node:20.9.0
 
-ARG FOUNDRY_VERSION=12.329 \
+ARG FOUNDRY_VERSION=14.368 \
     FOUNDRY_DATA=/foundrydata
 
 ENV FOUNDRY_VERSION=$FOUNDRY_VERSION \
-    FOUNDRY_DATA=/foundrydata 
+    FOUNDRY_DATA=/foundrydata
 
 RUN mkdir /app && \
     mkdir ${FOUNDRY_DATA}
