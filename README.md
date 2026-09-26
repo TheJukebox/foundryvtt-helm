@@ -1,6 +1,18 @@
 # foundryvtt-helm
 A Helm chart for deploying [FoundryVTT](https://foundryvtt.com/) to Kubernetes.
 
+## Quickstart
+
+> Note: You will need to build your own image, as described below, as this repository
+> is unable to ship the container.
+
+```bash
+helm install -n foundryvtt --create-namespace foundryvtt \
+    oci://ghcr.io/thejukebox \
+    --set image.repostory your.registry.example/foundryvtt \
+    --set image.tag 14.368
+```
+
 ## Packaging the Helm Chart
 
 You can package the Helm chart locally from this repository:
