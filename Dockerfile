@@ -1,4 +1,4 @@
-FROM node:20.9.0
+FROM node:24.11.0
 
 ARG FOUNDRY_VERSION=14.368 \
     FOUNDRY_DATA=/foundrydata

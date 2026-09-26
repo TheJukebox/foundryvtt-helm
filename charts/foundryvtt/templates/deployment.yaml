@@ -50,9 +50,14 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-      {{- with .Values.volumes }}
-      volumes:
-        {{- toYaml . | nindent 8 }}
+    volumes:
+      {{- if .Values.persistence.enabled }}
+      - name: data
+      persistenceVolumeClaim:
+      claimName: {{ .Values.persistence.existingClaim | default (include "foundryvtt.fullname" .) }}
+      {{- end }}
+      {{- with .Values.extraVolumes }}
+      {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

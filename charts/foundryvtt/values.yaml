@@ -93,6 +93,15 @@ volumes:
 #     secretName: mysecret
 #     optional: false
 
+persistence:
+  enabled: true
+  existingClaim: ""
+  storageClass: ""
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+  annotations: {}
+
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
   - mountPath: /foundrydata
