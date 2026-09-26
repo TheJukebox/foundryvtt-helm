@@ -8,7 +8,7 @@ image:
   repository: foundryvtt
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "12.329"
+  tag: "14.368"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -84,14 +84,20 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 # Additional volumes on the output Deployment definition.
-volumes:
-  - name: foundrydata
-    hostPath:
-      path: /data/foundrydata
+extraVolumes:
 # - name: foo
 #   secret:
 #     secretName: mysecret
 #     optional: false
+
+persistence:
+  enabled: true
+  existingClaim: ""
+  storageClass: ""
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+  annotations: {}
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
