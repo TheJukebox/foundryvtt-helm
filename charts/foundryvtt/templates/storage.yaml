@@ -1,7 +1,7 @@
 {{- if .Values.persistence.enabled }}
 {{- if not .Values.persistence.existingClaim }}
 apiVersion: v1
-kind: PersistenceVolumeClaim
+kind: PersistentVolumeClaim
 metadata:
   name : {{ include "foundryvtt.fullname" . }}
   annotations:
