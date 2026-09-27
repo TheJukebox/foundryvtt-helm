@@ -110,7 +110,7 @@ volumeMounts:
   - mountPath: /root/.local/share
     name: foundry-data
     readOnly: false
-  - mountPath: /root/.local/share/Config
+  - mountPath: /root/.local/share/FoundryVTT/Config
     name: foundry-options
     readOnly: false
 
