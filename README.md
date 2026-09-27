@@ -11,7 +11,7 @@ helm install -n foundryvtt --create-namespace foundryvtt \
     oci://ghcr.io/thejukebox/foundryvtt \
     --set image.repostory your.registry.example/foundryvtt \
     --set image.tag 14.368 \
-    --version 0.1.0
+    --version 0.2.0
 ```
 
 ## Packaging the Helm Chart
