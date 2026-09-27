@@ -85,6 +85,12 @@ autoscaling:
 
 # Additional volumes on the output Deployment definition.
 extraVolumes:
+  - name: foundry-options
+    configMap:
+      name: foundry-options
+      items:
+        - key: options.json
+          path: options.json
 # - name: foo
 #   secret:
 #     secretName: mysecret
@@ -101,9 +107,24 @@ persistence:
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
-  - mountPath: /foundrydata
-    name: foundrydata
+  - mountPath: /root/.local/share
+    name: foundry-data
     readOnly: false
+  - mountPath: /root/.local/share/Config
+    name: foundry-options
+    readOnly: false
+
+foundryvtt:
+  options:
+    port: 30000
+    upnp: false
+    fullscreen: false
+    dataPath: /root/.local/share
+    hostname: chart-example.local
+    routePrefix: ""
+    sslKey: ""
+    sslCert: ""
+    awsConfig: ""
 
 nodeSelector: {}
 
