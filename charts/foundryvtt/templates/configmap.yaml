@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foundry-options
+  namespace: 
+  labels:
+    {{- include "foundryvtt.labels" . | nindent 4 }}
+data:
+  options.json: |
+    {
+      "hostname": "{{ .Values.foundryvtt.options.hostname }}"
+      "port": "{{ .Values.foundryvtt.options.port }}",
+      "upnp": {{ .Values.foundryvtt.options.upnp }},
+      "dataPath": "{{ .Values.foundryvtt.options.dataPath }}",
+      "routePrefix": "{{ .Values.foundryvtt.options.routePrefix }}",
+      "sslKey": "{{ .Values.foundryvtt.options.sslKey }}",
+      "sslCert": "{{ .Values.foundryvtt.options.sslCert }}",
+      "awsConfig": "{{ .Values.foundryvtt.options.awsConfig }}"
+      "proxySSL": null,
+      "proxyPort": null,
+      "fullscreen": {{ .Values.foundryvtt.options.fullscreen }}
+    }
+

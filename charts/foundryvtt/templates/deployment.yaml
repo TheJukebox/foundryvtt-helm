@@ -52,7 +52,7 @@ spec:
           {{- end }}
       volumes:
       {{- if .Values.persistence.enabled }}
-        - name: foundrydata
+        - name: foundry-data
           persistentVolumeClaim:
             claimName: {{ .Values.persistence.existingClaim | default (include "foundryvtt.fullname" .) }}
       {{- end }}

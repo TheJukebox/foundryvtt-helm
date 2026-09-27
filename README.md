@@ -8,9 +8,10 @@ A Helm chart for deploying [FoundryVTT](https://foundryvtt.com/) to Kubernetes.
 
 ```bash
 helm install -n foundryvtt --create-namespace foundryvtt \
-    oci://ghcr.io/thejukebox \
+    oci://ghcr.io/thejukebox/foundryvtt \
     --set image.repostory your.registry.example/foundryvtt \
-    --set image.tag 14.368
+    --set image.tag 14.368 \
+    --version 0.1.0
 ```
 
 ## Packaging the Helm Chart
