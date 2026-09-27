@@ -8,14 +8,14 @@ metadata:
 data:
   options.json: |
     {
-      "hostname": "{{ .Values.foundryvtt.options.hostname }}"
+      "hostname": "{{ .Values.foundryvtt.options.hostname }}",
       "port": "{{ .Values.foundryvtt.options.port }}",
       "upnp": {{ .Values.foundryvtt.options.upnp }},
       "dataPath": "{{ .Values.foundryvtt.options.dataPath }}",
       "routePrefix": "{{ .Values.foundryvtt.options.routePrefix }}",
       "sslKey": "{{ .Values.foundryvtt.options.sslKey }}",
       "sslCert": "{{ .Values.foundryvtt.options.sslCert }}",
-      "awsConfig": "{{ .Values.foundryvtt.options.awsConfig }}"
+      "awsConfig": "{{ .Values.foundryvtt.options.awsConfig }}",
       "proxySSL": null,
       "proxyPort": null,
       "fullscreen": {{ .Values.foundryvtt.options.fullscreen }}
