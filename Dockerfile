@@ -4,7 +4,7 @@ ARG FOUNDRY_VERSION=14.368 \
     FOUNDRY_DATA=/foundrydata
 
 ENV FOUNDRY_VERSION=$FOUNDRY_VERSION \
-    FOUNDRY_DATA=/foundrydata
+    FOUNDRY_DATA=/root/.local/share
 
 RUN mkdir /app && \
     mkdir ${FOUNDRY_DATA}
